@@ -9,5 +9,5 @@ Run the server.js file (use nodejs instead of node if you're on a Debian distrib
 
 ``` node server.js ``` 
 
-Navigate to http://<ip address printed in console>?/new.html in your browser and you'll be all set.
+Navigate to http://(ip address printed in console)/new.html in your browser and you'll be all set.
 
