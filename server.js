@@ -39,5 +39,5 @@ io.sockets.on("connection", function(socket) {
         io.emit('newMessage', msg);
     });
 });
-server.listen(8000, "0.0.0.0");
+server.listen(8000);
 io.listen(server);
