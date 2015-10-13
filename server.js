@@ -1,9 +1,20 @@
 var http = require("http");
 var io = require('socket.io')();
-var url = require("url");
+var os = require('os');
 var fs = require("fs");
 var currentUsers = [];
 var resourceToFunction = {};
+var ifaces = os.networkInterfaces();
+var addresses = [];
+
+for (var a in ifaces) {
+	for (var b in ifaces[a]) {
+	    var addr = ifaces[a][b];
+	    if (addr.family === 'IPv4' && !addr.internal) {
+		console.log("Network IP: " + addr.address );
+	    }
+	}
+}
 
 var server = http.createServer(function(req, resp) {
     if (req.url == "/new.html") {
@@ -14,7 +25,10 @@ var server = http.createServer(function(req, resp) {
       resp.writeHead(200, {"Content-Type":  
 		req.url == '/style.css' ? 'text/css' : 'application/javascript'}); 
       fs.createReadStream(__dirname + req.url).pipe(resp);
-    }    
+    } else {
+	resp.writeHead(400, "Invalid URL/Method"); 
+	resp.end();
+    }
 });
 
 io.sockets.on("connection", function(socket) {
@@ -25,6 +39,5 @@ io.sockets.on("connection", function(socket) {
         io.emit('newMessage', msg);
     });
 });
-
-server.listen(8000);
+server.listen(8000, "0.0.0.0");
 io.listen(server);
