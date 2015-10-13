@@ -1,0 +1,33 @@
+.chat-box {
+  display: block;
+}
+
+.message {
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+}
+
+.message-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border: 2px solid black;
+}
+
+[name=messageText] {
+  width: 90%;
+  border: none;
+  padding: 10px;
+}
+
+button {
+  border: none;
+  background-color: grey;
+  float: right;
+  padding: 10px;
+}
+
+#list {
+  padding-left: 0px;
+}
