@@ -5,7 +5,6 @@ var fs = require("fs");
 var currentUsers = [];
 var resourceToFunction = {};
 var ifaces = os.networkInterfaces();
-var addresses = [];
 
 for (var a in ifaces) {
 	for (var b in ifaces[a]) {
